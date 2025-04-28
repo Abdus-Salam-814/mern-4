@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERN 4 Batch Routine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .active {
+            background-color: #ffeb3b;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>MERN 4 Batch Live & Support Class Routine</h1>
+
+<table id="routineTable">
+    <thead>
+        <tr>
+            <th>Day</th>
+            <th>11:00 AM</th>
+            <th>7:00 PM</th>
+            <th>8:00 PM</th>
+            <th>9:00 PM</th>
+            <th>10:00 PM</th>
+            <th>11:00 PM</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Saturday</td>
+            <td>Sumon Barai</td>
+            <td></td>
+            <td>Khalid Hossen</td>
+            <td></td>
+            <td>Sumon Barai</td>
+            <td>Khalid Hossen</td>
+        </tr>
+        <tr>
+            <td>Sunday</td>
+            <td colspan="6">7:00 PM Project Day Live Class</td>
+        </tr>
+        <tr>
+            <td>Monday</td>
+            <td>Sumon Barai</td>
+            <td></td>
+            <td>Khalid Hossen</td>
+            <td></td>
+            <td>Sumon Barai</td>
+            <td>Khalid Hossen</td>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+            <td>Sumon Barai</td>
+            <td>Sumon Barai</td>
+            <td>Khalid Hossen</td>
+            <td>Live Class</td>
+            <td></td>
+            <td>Khalid Hossen</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td>Sumon Barai</td>
+            <td></td>
+            <td>Khalid Hossen</td>
+            <td></td>
+            <td>Sumon Barai</td>
+            <td>Khalid Hossen</td>
+        </tr>
+        <tr>
+            <td>Thursday</td>
+            <td>Sumon Barai</td>
+            <td>Sumon Barai</td>
+            <td>Khalid Hossen</td>
+            <td>Live Class</td>
+            <td></td>
+            <td>Khalid Hossen</td>
+        </tr>
+        <tr>
+            <td>Friday</td>
+            <td>Sumon Barai</td>
+            <td>Sumon Barai</td>
+            <td>Khalid Hossen</td>
+            <td>Live Class</td>
+            <td></td>
+            <td>Khalid Hossen</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function highlightCurrentClass() {
+        const now = new Date();
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const currentDay = days[now.getDay()];
+        let currentHour = now.getHours();
+        let currentMinute = now.getMinutes();
+
+        const table = document.getElementById('routineTable');
+        const rows = table.getElementsByTagName('tr');
+
+        // time slots
+        const timeSlots = {
+            11: 1,
+            19: 2,
+            20: 3,
+            21: 4,
+            22: 5,
+            23: 6
+        };
+
+        let colIndex = -1;
+        if (timeSlots[currentHour] !== undefined) {
+            colIndex = timeSlots[currentHour];
+        }
+
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td');
+            if (cells.length > 1 && cells[0].innerText === currentDay && colIndex !== -1) {
+                cells[colIndex].classList.add('active');
+            }
+        }
+    }
+
+    highlightCurrentClass();
+    setInterval(highlightCurrentClass, 60000); // Update every minute
+</script>
+
+</body>
+</html>
